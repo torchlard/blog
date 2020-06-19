@@ -28,11 +28,9 @@ class UserController(private val repo: UserRepository){
   @GetMapping("/")
   fun findAll() = repo.findAll()
 
-
   @GetMapping("/{login}")
-  fun findOne(login: String) = repo.findByLogin(login) ?:
+  fun findOne(@PathVariable login: String) = repo.findByLogin(login) ?:
     throw ResponseStatusException(HttpStatus.NOT_FOUND, "user not exist")
-
 
 }
 
