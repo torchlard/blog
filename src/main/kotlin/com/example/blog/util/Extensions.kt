@@ -1,11 +1,11 @@
-package com.example.blog
+package com.example.blog.util
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatterBuilder
 import java.time.temporal.ChronoField
 import java.util.*
 
-private val daysLookup = (1..31).associate{it.toLong() to getOrdinal(it)}
+private val daysLookup = (1..31).associate{it.toLong() to getOrdinal(it) }
 
 private fun getOrdinal(n: Int) = when {
   n in 11..13 -> "${n}th"

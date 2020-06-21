@@ -1,11 +1,13 @@
-package com.example.blog
+package com.example.blog.controller
 
+import com.example.blog.repository.primary.ArticleRepository
+import com.example.blog.service.DataGenerator
+import com.example.blog.domain.primary.User
+import com.example.blog.repository.primary.UserRepository
 import com.fasterxml.jackson.annotation.JsonCreator
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import javax.transaction.Transactional
 
 
 @RestController
@@ -35,8 +37,10 @@ class ArticleController(private val repo: ArticleRepository, private val gen: Da
   fun get1(@PathVariable num: Int) = repo.get1(num)
 
   @GetMapping("/get2/{keyword}")
-  fun get2(@PathVariable keyword: String)
-          = repo.findByContentContaining(keyword).filter{ it.id!! < 50}
+  fun get2(@PathVariable keyword: String) = repo.findByContentContaining(keyword).filter{ it.id!! < 50}
+
+  @GetMapping("/join1/{id}")
+  fun join1(@PathVariable id: Long) = repo.join1(id)
 
 }
 
