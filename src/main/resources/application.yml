@@ -13,12 +13,16 @@ spring:
   output.ansi.enabled: always
   main.allow-bean-definition-overriding: true
 
+
+
 primary:
   datasource:
     jdbcUrl: jdbc:mariadb://localhost:3306/first
     username: root
     password: 666666
-    driverClassName: org.mariadb.jdbc.Driver
+    dataSourceClassName: org.mariadb.jdbc.Driver
+    hikari:
+      dataSourceClassName: org.mariadb.jdbc.Driver
 
 second:
   datasource:
@@ -26,6 +30,8 @@ second:
     username: root
     password: 666666
     driverClassName: org.mariadb.jdbc.Driver
+    hikari:
+      dataSourceClassName: org.mariadb.jdbc.Driver
 
 server.port: 10001
 

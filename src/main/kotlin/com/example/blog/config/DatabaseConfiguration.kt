@@ -1,5 +1,6 @@
 package com.example.blog.config
 
+import com.zaxxer.hikari.HikariConfig
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties
 import org.springframework.boot.context.properties.ConfigurationProperties
@@ -44,10 +45,10 @@ class DatabaseConfiguration(private val env: Environment){
   fun secondDataSource(): DataSource = DataSourceBuilder.create().driverClassName("org.mariadb.jdbc.Driver")
     .url("jdbc:mariadb://localhost:3306/second").username("root").password("666666").build()
 
-//  @Bean
-//  @Qualifier("hikariConfig")
-//  @ConfigurationProperties(prefix = "spring.datasource.primary.hikari")
-//  fun hikariConfig(): HikariConfig = HikariConfig()
+  @Bean
+  @Qualifier("hikariConfig")
+  @ConfigurationProperties(prefix = "spring.datasource.primary.hikari")
+  fun hikariConfig(): HikariConfig = HikariConfig()
 
 }
 
